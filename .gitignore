@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.p~ 
+*.swp
+*.bak
+
+# Virtualenv
+.env
+.venv/
+venv/
+ENV/
+env.bak/
+env/
+
+# Django stuff
+*.log
+*.ot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# MacOS
+.DS_Store
+
+# Coverage
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+
+# Migrations 
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# dotenv
+*.env
+p
