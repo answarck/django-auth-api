@@ -75,6 +75,8 @@ class LoginView(APIView):
                 'refresh': str(refresh)
             })
         return Response({'error': 'Invalid username or password.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
     
 class LoginNowView(TemplateView):
     template_name = 'login_now.html'
