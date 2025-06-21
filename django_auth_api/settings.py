@@ -154,13 +154,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # All-auth
-# Disable username and password login/signup
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_PASSWORD_REQUIRED = False
-ACCOUNT_EMAIL_VERIFICATION = "none"
 SOCIALACCOUNT_LOGIN_ON_GET=True
-
-# Optional: Redirect after login
-LOGIN_REDIRECT_URL = '/api/success/'
+LOGIN_REDIRECT_URL = '/api/login_now/'

@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
@@ -74,10 +75,6 @@ class LoginView(APIView):
                 'refresh': str(refresh)
             })
         return Response({'error': 'Invalid username or password.'}, status=status.HTTP_400_BAD_REQUEST)
-
-
-class LoginSuccessView(TemplateView):
-    template_name = 'login_success.html'
     
 class LoginNowView(TemplateView):
     template_name = 'login_now.html'
@@ -85,4 +82,12 @@ class LoginNowView(TemplateView):
 @login_required
 def signout_view(request):
     logout(request)
+    print(request.user)
     return redirect('/api/login_now/')
+
+class RedirectToLogin(RedirectView):
+    
+    permanent = False
+    
+    def get_redirect_url(self, *args, **kwargs):
+        return '/api/login_now/'
