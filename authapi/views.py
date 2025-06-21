@@ -1,5 +1,9 @@
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
+from django.views.generic import TemplateView
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -70,3 +74,15 @@ class LoginView(APIView):
                 'refresh': str(refresh)
             })
         return Response({'error': 'Invalid username or password.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LoginSuccessView(TemplateView):
+    template_name = 'login_success.html'
+    
+class LoginNowView(TemplateView):
+    template_name = 'login_now.html'
+
+@login_required
+def signout_view(request):
+    logout(request)
+    return redirect('/api/login_now/')
